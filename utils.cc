@@ -22,14 +22,17 @@ void ReadVecsFromFile(const string& vec_file_name, mapUnsignedStr& vocab,
 	if (vec_file.is_open()) {
 		string line;
 		vocab.clear();
-		while (getline(vec_file, line)) {
+		while (vocab_size<1*100*1000 && getline(vec_file, line)) {
 			vector < string > vector_stuff = split_line(line, ' ');
 			string word = vector_stuff[0];
 			Col word_vec = Col::Zero(vector_stuff.size() - 1);
 			for (unsigned i = 0; i < word_vec.size(); ++i)
 				word_vec(i, 0) = stof(vector_stuff[i + 1]);
-			vocab.push_back(word);
+        
 			word_vecs.push_back(word_vec);
+      
+			vocab.push_back(word);
+      vocab_size++;
 		}
 		cerr << "Read: " << vec_file_name << endl;
 		cerr << "Vocab length: " << word_vecs.size() << endl;

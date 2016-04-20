@@ -186,6 +186,10 @@ void Train(const string& out_file, const int& factor,
            const int& cores, const double& l1_reg, const double& l2_reg,
            const vector<Col>& word_vecs, const mapUnsignedStr& vocab) {
   Model model(factor, word_vecs[0].size(), word_vecs.size());
+  cerr << "----------------" << endl;
+  cerr << "Allocated model " << endl;
+  cerr << "----------------" << endl;
+  
   double avg_error = 1, prev_avg_err = 0;
   int iter = 0;
   while (iter < 20 || (avg_error > 0.05 && iter < 75 && abs(avg_error - prev_avg_err) > 0.001)) {
@@ -249,3 +253,4 @@ int main(int argc, char **argv) {
   }
   return 1;
 }
+ 
