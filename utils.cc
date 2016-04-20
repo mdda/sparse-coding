@@ -32,7 +32,7 @@ void ReadVecsFromFile(const string& vec_file_name, mapUnsignedStr& vocab,
 			word_vecs.push_back(word_vec);
       
 			vocab.push_back(word);
-      vocab_size++;
+		        vocab_size++;
 		}
 		cerr << "Read: " << vec_file_name << endl;
 		cerr << "Vocab length: " << word_vecs.size() << endl;
