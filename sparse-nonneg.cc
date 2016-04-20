@@ -211,7 +211,9 @@ void Train(const string& out_file, const int& factor,
         total_error += error;
         num_words += 1;
         atom_l1_norm += model.atom[word_id].var.lpNorm<1>();
-        cerr << num_words << "\r";
+	if(num_words % 1000 == 0) {
+		cerr << num_words << "\r";
+	}
       }
       model.UpdateParams(word_id, RATE, diff_vec, l1_reg, l2_reg);
     }
